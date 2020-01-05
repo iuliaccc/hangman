@@ -1,0 +1,12 @@
+.buttons{
+    background-color: cadetblue;
+    color: aliceblue;
+    font-size: 30px;
+    padding: 15%;
+    width: 100%;
+    margin: 15px;
+}
+#id{
+    text-align: right;
+    float: right;
+}
