@@ -1,6 +1,7 @@
 
 window.onload = function () {
 
+
     function reset(){
         window.location.reload();
     };
@@ -78,15 +79,22 @@ window.onload = function () {
     // var showClue = document.getElementById("clue");
 
     //let foundedIndexes=[];
-
-    let score=0;
+    let sessionScore=sessionStorage.getItem('score');
+    let score;
+    if(sessionScore)
+        score=sessionScore;
+    else score=0;
     let keepingScore = function(){
         let divScore= document.getElementById("score");
         let spanScore=document.createElement("span");
         spanScore.innerHTML=score;
+        spanScore.id='scoreid';
         divScore.appendChild(spanScore);
 
     };
+    if (!sessionStorage.getItem('score')) {
+        sessionStorage.setItem('score',score.toString());
+    }
     keepingScore();
     let buttons = function () {
         let myButtons = document.getElementById('buttons');
@@ -115,6 +123,12 @@ window.onload = function () {
         }
         if(win===true){
             document.getElementById('game').innerHTML = 'You Won!!!';
+            score++;
+            // score.innerText=score;
+            document.getElementById('scoreid').innerText=score;
+            console.log(score);
+            sessionStorage.setItem('score',score)
+
         }
     };
 
@@ -186,8 +200,6 @@ winning()
 
 
     let displayWord = function(){
-        let firstLetter;
-        let lastLetter;
         let divWord = document.getElementById('chosenWord');
         for(let i=0;i<word.length;i++){
             let selectedLetter=document.createElement("span");
@@ -205,10 +217,20 @@ winning()
 
 function  lost() {
     if(lives===0){
-       window.alert("I have spoken. You lost!")
-    }
+        sessionStorage.removeItem('score');
+        window.alert("I have spoken. You lost!");
+       }
 }
 winning()
+    window.addEventListener("keydown", function (event) {
+        if (event.defaultPrevented) {
+            return; // Do nothing if the event was already processed
+        }
+        if(event.key.charCodeAt()&&'A'.charCodeAt()<=event.key.charCodeAt()&&event.key.charCodeAt()<='z'.charCodeAt()) {
+
+            findLetterIndexes(event.key)
+        }
+    })
 };
 
 
