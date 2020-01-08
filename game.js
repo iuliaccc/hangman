@@ -1,8 +1,12 @@
 
 window.onload = function () {
+    // let popup= document.getElementById("popup");
+    // popup.style.visibility="hidden";
 
 
-    function reset(){
+    function reset(win = false){
+        // if (!win)
+        //     sessionStorage.setItem('score',0);
         window.location.reload();
     };
     document.getElementById("reset").addEventListener("click", reset);
@@ -40,7 +44,7 @@ window.onload = function () {
         "pixel",
         "zombie",
     ] ;
-
+    let win = false;
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -126,12 +130,15 @@ window.onload = function () {
             // // document.getElementById('game-arrangement').style.fontSize="100px";
             // document.getElementById('game-arrangement').style.color="white";
             // document.getElementById('game-arrangement').style.textAlign="center";
+            popup=document.getElementById('popup1')
+            popup.style.display="block";
             document.getElementById('game').innerHTML = 'You Won!!!';
             score++;
             // score.innerText=score;
             document.getElementById('scoreid').innerText=score;
             console.log(score);
             sessionStorage.setItem('score',score)
+            win=true
 
         }
     };
@@ -188,7 +195,7 @@ window.onload = function () {
             console.log(lives)
         }
         document.getElementById(letter).disabled =true;
-winning()
+        winning()
         displayLives(lives);
 
         };
@@ -256,7 +263,7 @@ function  lost() {
 
        }
 }
-winning();
+// winning();
     window.addEventListener("keydown", function (event) {
         if (event.defaultPrevented) {
             return; // Do nothing if the event was already processed
