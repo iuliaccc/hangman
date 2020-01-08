@@ -123,6 +123,22 @@
     text-align: right;
     float: right;
 }
+#hideImgWin{
+    display:none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    left: 438px
+}
+#hideImgLost{
+    display:none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    left: 438px
+}
 .wrap {
     margin: auto;
 }
@@ -260,7 +276,6 @@ button:hover {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
-    display:none;
     opacity: 1;
 }
 .overlay:target {
@@ -279,6 +294,7 @@ button:hover {
     background: #fff;
     border-radius: 5px;
     width: 30%;
+    display:none;
     /*position: relative;*/
     transition: all 5s ease-in-out;
 }
@@ -308,6 +324,11 @@ button:hover {
 
 /*POP-UP*/
 
+
+/*#hideImg:hover {*/
+/*    -webkit-transform: scaleX(-1);*/
+/*    transform: scaleX(-1);*/
+/*}*/
 
 
 #popup {
