@@ -27,7 +27,6 @@ window.onload = function () {
         "poetry",
         "mysterious",
         "neighborhood",
-        "Norway",
         "nuts",
         "occasionally",
         "relationship",
@@ -106,6 +105,7 @@ window.onload = function () {
             list.id =alphabet[i];
             list.addEventListener("click",()=>findLetterFromWords(event) );
             list.innerText= alphabet[i]
+            list.className="letter";
             myButtons.appendChild(letters);
             letters.appendChild(list);
         }
@@ -122,6 +122,10 @@ window.onload = function () {
             }
         }
         if(win===true){
+            // createImg();
+            // // document.getElementById('game-arrangement').style.fontSize="100px";
+            // document.getElementById('game-arrangement').style.color="white";
+            // document.getElementById('game-arrangement').style.textAlign="center";
             document.getElementById('game').innerHTML = 'You Won!!!';
             score++;
             // score.innerText=score;
@@ -131,6 +135,13 @@ window.onload = function () {
 
         }
     };
+    // function createImg() {
+    //     var x = document.createElement("IMG");
+    //     x.setAttribute("src", "wn.png");
+    //     x.setAttribute("width", "304");
+    //     x.setAttribute("height", "228");
+    //     x.setAttribute("alt", "The Pulpit Rock");
+    //     document.body.appendChild(x);
 
 
 //caut cuvant random din lista
@@ -172,14 +183,32 @@ window.onload = function () {
             document.getElementById(letter).style.background="red";
             lives--;
             updateHangmanPicture();
+            displayLives(lives);
             lost();
             console.log(lives)
         }
         document.getElementById(letter).disabled =true;
 winning()
+        displayLives(lives);
 
         };
         //console.log("literele cautate se afla pe pozitiile: " +foundedIndexes);
+
+    function displayLives(number) {
+        let heartsDiv=document.getElementById('lives').src = './images/hearts.png'
+        document.getElementById("lives").innerHTML = 'Lives:  ';
+        for (var i = 0; i < number; i++)
+            {
+                //let multipyhearts= heartsDiv*i;
+                let a = new Image();
+                a.src = './images/hearts.png';
+                a.width = 25;
+                a.height = 25;
+                document.getElementById("lives").appendChild(a);
+            }
+
+
+    }
 
     function updateHangmanPicture() {
         document.getElementById('hangmanPic').src = './images/' + lives + '.jpg';
@@ -218,10 +247,16 @@ winning()
 function  lost() {
     if(lives===0){
         sessionStorage.removeItem('score');
-        window.alert("I have spoken. You lost!");
+        //window.alert("I have spoken. You lost!");
+        document.getElementById('container').style.fontSize="30px";
+        document.getElementById('container').style.color="white";
+
+        document.getElementById('container').innerHTML = 'You lost.... The answer was: ' + word;
+
+
        }
 }
-winning()
+winning();
     window.addEventListener("keydown", function (event) {
         if (event.defaultPrevented) {
             return; // Do nothing if the event was already processed
@@ -230,7 +265,120 @@ winning()
 
             findLetterIndexes(event.key)
         }
-    })
+    });
+
+//     var popupEl = document.getElementById('popup');
+// // As a native plugin
+//     var popup = new Popup(popupEl, {
+//         width: 400,
+//         height: 300
+//     });
+//     var open = document.getElementById('open');
+//     open.onclick = function() {
+//         popup.open();
+//     };
+
+
+
+
+
+
+
+//     var btnOpen = select('.js-open');
+//     var btnClose = select('.js-close');
+//     var modal = select('.js-modal');
+//     var modalChildren = modal.children;
+//
+//     function hideModal() {
+//         dynamics.animate(modal, {
+//             opacity: 0,
+//             translateY: 100
+//         }, {
+//             type: dynamics.spring,
+//             frequency: 50,
+//             friction: 600,
+//             duration: 1500
+//         });
+//     }
+//
+//     function showModal() {
+//         // Define initial properties
+//         dynamics.css(modal, {
+//             opacity: 0,
+//             scale: .5
+//         });
+//
+//         // Animate to final properties
+//         dynamics.animate(modal, {
+//             opacity: 1,
+//             scale: 1
+//         }, {
+//             type: dynamics.spring,
+//             frequency: 300,
+//             friction: 400,
+//             duration: 1000
+//         });
+//     }
+//
+//     function showBtn() {
+//         dynamics.css(btnOpen, {
+//             opacity: 0
+//         });
+//
+//         dynamics.animate(btnOpen, {
+//             opacity: 1
+//         }, {
+//             type: dynamics.spring,
+//             frequency: 300,
+//             friction: 400,
+//             duration: 800
+//         });
+//     }
+//
+//     function showModalChildren() {
+//         // Animate each child individually
+//         for(var i=0; i<modalChildren.length; i++) {
+//             var item = modalChildren[i];
+//
+//             // Define initial properties
+//             dynamics.css(item, {
+//                 opacity: 0,
+//                 translateY: 30
+//             });
+//
+//             // Animate to final properties
+//             dynamics.animate(item, {
+//                 opacity: 1,
+//                 translateY: 0
+//             }, {
+//                 type: dynamics.spring,
+//                 frequency: 300,
+//                 friction: 400,
+//                 duration: 1000,
+//                 delay: 100 + i * 40
+//             });
+//         }
+//     }
+//
+//     function toggleClasses() {
+//         toggleClass(btnOpen, 'is-active');
+//         toggleClass(modal, 'is-active');
+//     }
+//
+// // Open nav when clicking sandwich button
+//     btnOpen.addEventListener('click', function(e) {
+//         toggleClasses();
+//         showModal();
+//         showModalChildren();
+//     });
+//
+// // Open nav when clicking sandwich button
+//     btnClose.addEventListener('click', function(e) {
+//         hideModal();
+//         dynamics.setTimeout(toggleClasses, 500);
+//         dynamics.setTimeout(showBtn, 500);
+//     });
+
 };
 
 
