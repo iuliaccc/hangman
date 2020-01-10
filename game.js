@@ -131,7 +131,7 @@ window.onload = function () {
             let all=document.getElementsByClassName('all')[0];
             let gameArrangement=document.getElementsByClassName('game-arrangement')[0];
             all.removeChild(gameArrangement);
-            document.getElementById("reset").style.marginTop="60vh";
+            // document.getElementById("reset").style.marginTop="10vh";
 
             // addImg();
             // document.getElementById("hangmanPic").innerHTML="<img src=\"./images/badass.jpg\"  alt>";

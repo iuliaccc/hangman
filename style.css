@@ -15,6 +15,7 @@
 
 .game-arrangement{
     display: flex;
+    margin: 5vh;
     /*flex-wrap: wrap;*/
     flex-direction: column;
     /*width: 100px;*/
@@ -125,11 +126,13 @@
 }
 #hideImgWin{
     display:none;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%,-50%);
-    left: 438px
+    margin: 0 auto;
+    padding-top: 15vh;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*right: 50%;*/
+    /*transform: translate(50%,-50%);*/
+    /*left: 438px*/
 }
 #hideImgLost{
     display:none;
@@ -330,7 +333,9 @@ button:hover {
 /*    transform: scaleX(-1);*/
 /*}*/
 
-
+#img1{
+    margin-left: 5vh;
+}
 #popup {
     position: absolute;
     top: 50%;
@@ -340,3 +345,9 @@ button:hover {
     min-height: 65vh;
 }
 
+@media only screen and (min-width: 768px) {
+    /* For mobile phones: */
+    body {
+        width: 100%;
+    }
+}
